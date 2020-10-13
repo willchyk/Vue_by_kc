@@ -9,17 +9,27 @@
 <body>
     <div id="app">
         {{ nextYear("안녕") }}
+        <input :type="type" :value="inputData"/>
+        <a :href="getKossieCoderLink('kossiecoder')" target="_blank">코지 코더 채널</a>
     </div>
     <script>
+        // v-bind는 생략이 가능하다b
+        // :type, :value 등으로도 binding이 가능함
         new Vue({
             el: "#app",
             data: {
                 person: {
                 name: "Chanyoung",
                 age: 26
-                }
+                },
+                inputData: "hello",
+                type: "number",
+                link: "https://www.youtube.com/"
             },
             methods: {
+                getKossieCoderLink(channel) {
+                    return this.link + channel;
+                },
                 nextYear(greeting) {
                     return greeting + "! " + this.person.name + '은 내년에 ' + (this.person.age + 1) + '살 입니다.';
                 },
